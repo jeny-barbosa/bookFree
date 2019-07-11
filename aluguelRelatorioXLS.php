@@ -20,13 +20,13 @@ $resultado = mysqli_query($conn, "SELECT aluguel.id, livro.nome as livro, usuari
 
 
 while ($dados = mysqli_fetch_array($resultado)) {
-    $tabela .= '<tr>';
-    $tabela .= '<td>' . $dados['id'] . '</td>';
-    $tabela .= '<td>' . $dados['usuario'] . '</td>';
-    $tabela .= '<td>' . $dados['livro'] . '</td>';
-    $tabela .= '<td>' . $dados['data_inicio'] . '</td>';
-    $tabela .= '<td>' . $dados['data_fim'] . '</td>';
-    $tabela .= '</tr>';
+  $tabela .= '<tr>';
+  $tabela .= '<td>' . $dados['id'] . '</td>';
+  $tabela .= '<td>' . $dados['usuario'] . '</td>';
+  $tabela .= '<td>' . $dados['livro'] . '</td>';
+  $tabela .= '<td>' . $dados['data_inicio'] . '</td>';
+  $tabela .= '<td>' . $dados['data_fim'] . '</td>';
+  $tabela .= '</tr>';
 }
 
 $tabela .= '</table>';

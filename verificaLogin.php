@@ -11,11 +11,11 @@ $query = "SELECT email, senha FROM `usuarios` WHERE `email` = '$email' AND `senh
 $result = mysqli_query($conn, $query);
 
 if (mysqli_num_rows($result) > 0) {
-    $_SESSION['email'] = $email;
-    $_SESSION['senha'] = $senha;
-    header('location: telaLivro.php');
+  $_SESSION['email'] = $email;
+  $_SESSION['senha'] = $senha;
+  header('location: telaLivro.php');
 } else {
-    session_destroy();
-    header('location:index.php');
+  session_destroy();
+  header('location:index.php');
 }
 ?>

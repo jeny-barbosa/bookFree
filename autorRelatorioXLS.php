@@ -15,9 +15,9 @@ $tabela .= '</tr>';
 $resultado = mysqli_query($conn, 'SELECT DISTINCT autor FROM livro order by autor');
 
 while ($dados = mysqli_fetch_array($resultado)) {
-    $tabela .= '<tr>';
-    $tabela .= '<td>' . $dados['autor'] . '</td>';
-    $tabela .= '</tr>';
+  $tabela .= '<tr>';
+  $tabela .= '<td>' . $dados['autor'] . '</td>';
+  $tabela .= '</tr>';
 }
 
 $tabela .= '</table>';

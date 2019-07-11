@@ -17,10 +17,10 @@ $resultado = mysqli_query($conn, 'SELECT DISTINCT nome, codigo FROM livro');
 
 
 while ($dados = mysqli_fetch_array($resultado)) {
-    $tabela .= '<tr>';
-    $tabela .= '<td>' . $dados['codigo'] . '</td>';
-    $tabela .= '<td>' . $dados['nome'] . '</td>';
-    $tabela .= '</tr>';
+  $tabela .= '<tr>';
+  $tabela .= '<td>' . $dados['codigo'] . '</td>';
+  $tabela .= '<td>' . $dados['nome'] . '</td>';
+  $tabela .= '</tr>';
 }
 
 $tabela .= '</table>';

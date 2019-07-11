@@ -13,7 +13,7 @@ require 'conexao.php';
 //cria um documento PDF
 $fpdf = new FPDF('p', 'mm', 'A4');
 
-$fpdf->AddPage(); //adiconar uma pÃ¡gina 
+$fpdf->AddPage(); //adiconar uma pÃ¡gina
 //$fpdf->Image('images/marca.png');//figura
 //endereco da empresa
 $fpdf->setFont('arial', '', 12);
@@ -38,81 +38,80 @@ $fpdf->ln(20);
 //AtÃ© aqui Ã© igual para todos...............
 
 if ($_GET['opcao'] == '1') {//mostrar todos os filmes
-    //Query: mostrar todos os filmes
-    $sql = "SELECT * FROM livro";
+  //Query: mostrar todos os filmes
+  $sql = "SELECT * FROM livro";
 
-    $dados = mysqli_query($conn, $sql);
+  $dados = mysqli_query($conn, $sql);
 
-    //varrendo o banco atras do dados do filme
+  //varrendo o banco atras do dados do filme
 
-    while ($linha = mysqli_fetch_assoc($dados)) {
+  while ($linha = mysqli_fetch_assoc($dados)) {
 
-        //configura a fonte Label...........
-        $fpdf->setFont('arial', 'B', 12);
-        $fpdf->Cell(70, 20, converte("Titulo"), 0, 0, 'L');
+    //configura a fonte Label...........
+    $fpdf->setFont('arial', 'B', 12);
+    $fpdf->Cell(70, 20, converte("Titulo"), 0, 0, 'L');
 
-        //configura a fonte
-        $fpdf->setFont('arial', 'B', 12);
-        $fpdf->Cell(0, 20, $linha['titulo'], 0, 1, 'L');
+    //configura a fonte
+    $fpdf->setFont('arial', 'B', 12);
+    $fpdf->Cell(0, 20, $linha['titulo'], 0, 1, 'L');
 
-        //configura a fonte Label.........
-        $fpdf->setFont('arial', 'B', 12);
-        $fpdf->Cell(70, 20, converte("Trailer"), 0, 0, 'L');
+    //configura a fonte Label.........
+    $fpdf->setFont('arial', 'B', 12);
+    $fpdf->Cell(70, 20, converte("Trailer"), 0, 0, 'L');
 
-        //configura a fonte
-        $fpdf->setFont('arial', 'B', 12);
-        $fpdf->Cell(0, 20, $linha['trailer'], 0, 1, 'L');
-    }//while
+    //configura a fonte
+    $fpdf->setFont('arial', 'B', 12);
+    $fpdf->Cell(0, 20, $linha['trailer'], 0, 1, 'L');
+  }//while
 } elseif ($_GET['opcao'] == '2') {
-    //relatorio individual pegar o 'id'
-    //Query: mostrar todos os filmes
-$sql = "SELECT * FROM livro WHERE codigo=" . $_POST['codigo'];
+  //relatorio individual pegar o 'id'
+  //Query: mostrar todos os filmes
+  $sql = "SELECT * FROM livro WHERE codigo=" . $_POST['codigo'];
 
-    $dados = mysqli_query($conn, $sql);
+  $dados = mysqli_query($conn, $sql);
 
-    //varrendo o banco atras do dados do filme
+  //varrendo o banco atras do dados do filme
 
-    while ($linha = mysqli_fetch_assoc($dados)) {
-
-
-        $fpdf->setFont('arial', 'B', 12);
-        //$fpdf->Cell(70,20,converte("Codigo"),0,0,'L');
-        //configura a fonte
-        $fpdf->setFont('arial', 'B', 12);
-        $fpdf->Cell(0, 20, $linha['codigo'], 0, 1, 'L');
+  while ($linha = mysqli_fetch_assoc($dados)) {
 
 
-        //configura a fonte Label...........
-        $fpdf->setFont('arial', 'B', 12);
-        //$fpdf->Cell(70,20,converte("Titulo"),0,0,'L');
-        //configura a fonte
-        $fpdf->setFont('arial', 'B', 12);
-        $fpdf->Cell(0, 20, $linha['titulo'], 0, 1, 'L');
-
-        //configura a fonte Label............
-        $fpdf->setFont('arial', 'B', 12);
-        //$fpdf->Cell(70,20,converte("Sinopse"),0,0,'L');
-        //configura a fonte
-        $fpdf->setFont('arial', 'B', 12);
-        $fpdf->Cell(0, 20, $linha['sinopse'], 0, 1, 'L');
-
-        //configura a fonte Label............
-        $fpdf->setFont('arial', 'B', 12);
-        //$fpdf->Cell(70,20,converte("Quantidade"),0,0,'L');
-        //configura a fonte
-        $fpdf->setFont('arial', 'B', 12);
-        $fpdf->Cell(0, 20, $linha['quantidade'], 0, 1, 'L');
+    $fpdf->setFont('arial', 'B', 12);
+    //$fpdf->Cell(70,20,converte("Codigo"),0,0,'L');
+    //configura a fonte
+    $fpdf->setFont('arial', 'B', 12);
+    $fpdf->Cell(0, 20, $linha['codigo'], 0, 1, 'L');
 
 
-        //configura a fonte Label.........
-        $fpdf->setFont('arial', 'B', 12);
-        //$fpdf->Cell(70,20,converte("Trailer"),0,0,'L');
-        //configura a fonte
-        $fpdf->setFont('arial', 'B', 12);
-        $fpdf->Cell(0, 20, $linha['trailer'], 0, 1, 'L');
-    }//while
+    //configura a fonte Label...........
+    $fpdf->setFont('arial', 'B', 12);
+    //$fpdf->Cell(70,20,converte("Titulo"),0,0,'L');
+    //configura a fonte
+    $fpdf->setFont('arial', 'B', 12);
+    $fpdf->Cell(0, 20, $linha['titulo'], 0, 1, 'L');
+
+    //configura a fonte Label............
+    $fpdf->setFont('arial', 'B', 12);
+    //$fpdf->Cell(70,20,converte("Sinopse"),0,0,'L');
+    //configura a fonte
+    $fpdf->setFont('arial', 'B', 12);
+    $fpdf->Cell(0, 20, $linha['sinopse'], 0, 1, 'L');
+
+    //configura a fonte Label............
+    $fpdf->setFont('arial', 'B', 12);
+    //$fpdf->Cell(70,20,converte("Quantidade"),0,0,'L');
+    //configura a fonte
+    $fpdf->setFont('arial', 'B', 12);
+    $fpdf->Cell(0, 20, $linha['quantidade'], 0, 1, 'L');
+
+
+    //configura a fonte Label.........
+    $fpdf->setFont('arial', 'B', 12);
+    //$fpdf->Cell(70,20,converte("Trailer"),0,0,'L');
+    //configura a fonte
+    $fpdf->setFont('arial', 'B', 12);
+    $fpdf->Cell(0, 20, $linha['trailer'], 0, 1, 'L');
+  }//while
 }
-
 
 $fpdf->Output();
 ?>

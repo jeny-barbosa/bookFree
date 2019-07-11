@@ -19,12 +19,12 @@ $resultado = mysqli_query($conn, 'SELECT nome,edicao FROM livro order by edicao'
 
 
 while ($dados = mysqli_fetch_array($resultado)) {
-    $tabela .= '<tr>';
-    //$tabela .= '<td>' . $dados['codigo'] . '</td>';
-    $tabela .= '<td>' . $dados['nome'] . '</td>';
-    //$tabela .= '<td>' . $dados['autor'] . '</td>';
-    $tabela .= '<td>' . $dados['edicao'] . '</td>';
-    $tabela .= '</tr>';
+  $tabela .= '<tr>';
+  //$tabela .= '<td>' . $dados['codigo'] . '</td>';
+  $tabela .= '<td>' . $dados['nome'] . '</td>';
+  //$tabela .= '<td>' . $dados['autor'] . '</td>';
+  $tabela .= '<td>' . $dados['edicao'] . '</td>';
+  $tabela .= '</tr>';
 }
 
 $tabela .= '</table>';

@@ -15,10 +15,10 @@ $html .= '<tbody>';
 $result_transacoes = "SELECT DISTINCT * FROM livro ";
 $resultado_trasacoes = mysqli_query($conn, $result_transacoes);
 while ($row_transacoes = mysqli_fetch_assoc($resultado_trasacoes)) {
-    $html .= '<tr><td>' . $row_transacoes['codigo'] . "</td>";
-    $html .= '<td>' . $row_transacoes['nome'] . "</td>";
-    $html .= '<td>' . $row_transacoes['autor'] . "</td>";
-    $html .= '<td>' . $row_transacoes['edicao'] . "</td></tr>";
+  $html .= '<tr><td>' . $row_transacoes['codigo'] . "</td>";
+  $html .= '<td>' . $row_transacoes['nome'] . "</td>";
+  $html .= '<td>' . $row_transacoes['autor'] . "</td>";
+  $html .= '<td>' . $row_transacoes['edicao'] . "</td></tr>";
 }
 $html .= '</tbody>';
 $html .= '</table';
@@ -30,16 +30,13 @@ require_once("dompdf/autoload.inc.php");
 
 $dompdf = new DOMPDF();
 
-$dompdf->load_html('
-			<h1 style="text-align: center;">BookFree - Relatório Geral</h1>
-			' . $html . '
-		');
+$dompdf->load_html('<h1 style="text-align: center;">BookFree - Relatório Geral</h1>' . $html . '');
 
 $dompdf->render();
 
 $dompdf->stream(
-        "relatorio_celke.pdf", array(
-    "Attachment" => false //Para realizar o download somente alterar para true
-        )
+  "relatorio_celke.pdf", array(
+  "Attachment" => false //Para realizar o download somente alterar para true
+  )
 );
 ?>

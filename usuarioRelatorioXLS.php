@@ -18,11 +18,11 @@ $resultado = mysqli_query($conn, 'SELECT * FROM usuarios order by codigo');
 
 
 while ($dados = mysqli_fetch_array($resultado)) {
-    $tabela .= '<tr>';
-    $tabela .= '<td>' . $dados['codigo'] . '</td>';
-    $tabela .= '<td>' . $dados['nome'] . '</td>';
-    $tabela .= '<td>' . $dados['email'] . '</td>';
-    $tabela .= '</tr>';
+  $tabela .= '<tr>';
+  $tabela .= '<td>' . $dados['codigo'] . '</td>';
+  $tabela .= '<td>' . $dados['nome'] . '</td>';
+  $tabela .= '<td>' . $dados['email'] . '</td>';
+  $tabela .= '</tr>';
 }
 
 $tabela .= '</table>';

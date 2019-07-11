@@ -14,9 +14,9 @@ $html .= '<tbody>';
 $result_transacoes = "SELECT codigo, nome, email FROM usuarios WHERE codigo = '" . $_GET['codigo'] . "'";
 $resultado_trasacoes = mysqli_query($conn, $result_transacoes);
 while ($row_transacoes = mysqli_fetch_assoc($resultado_trasacoes)) {
-    $html .= '<tr><td>' . $row_transacoes['codigo'] . "</td>";
-    $html .= '<td>' . $row_transacoes['nome'] . "</td>";
-    $html .= '<td>' . $row_transacoes['email'] . "</td></tr>";
+  $html .= '<tr><td>' . $row_transacoes['codigo'] . "</td>";
+  $html .= '<td>' . $row_transacoes['nome'] . "</td>";
+  $html .= '<td>' . $row_transacoes['email'] . "</td></tr>";
 }
 
 $html .= '</tbody>';
@@ -32,8 +32,8 @@ $dompdf->load_html('
 		');
 $dompdf->render();
 $dompdf->stream(
-        "relatorioEdicao", array(
-    "Attachment" => false //Para realizar o download somente alterar para true
-        )
+  "relatorioEdicao", array(
+  "Attachment" => false //Para realizar o download somente alterar para true
+  )
 );
 ?>
