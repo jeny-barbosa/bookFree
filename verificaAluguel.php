@@ -2,8 +2,6 @@
 
 require 'conexao.php';
 
-
-
 $valida = true;
 
 if ($_POST['user'] == '') {

@@ -1,51 +1,51 @@
-/* 
+/*
     Created on : 01/07/2019, 09:26:35
     Author     : Jennefer Barbosa
 */
 
 div.gallery {
-    margin-left: 20px;
-    border: 1px solid #ccc;
-    float: left;
-    width: 180px;
+  margin-left: 20px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 180px;
 }
 div.gallery:hover {
-    border: 3px solid #777;
+  border: 3px solid #777;
 }
 
 div.gallery img {
-    width: 100%;
-    height: auto;
+  width: 100%;
+  height: auto;
 
 }
 div.desc {
-    padding: 10px;
-    text-align: center;
-    color: black;
+  padding: 10px;
+  text-align: center;
+  color: black;
 }
 h1{
-    margin-top: 52px;
-    float: none;
-    margin-left: 25%;
-    text-align: left;
+  margin-top: 52px;
+  float: none;
+  margin-left: 25%;
+  text-align: left;
 }
 .foto{
-    margin-left: 10%;
+  margin-left: 10%;
 
 }
-p{ 
-    text-align: justify; 
-    text-indent:4em
+p{
+  text-align: justify;
+  text-indent:4em
 }
 fieldset{
-    padding-left:5%;
+  padding-left:5%;
 }
 .texto {
-    padding-left: 10%;
+  padding-left: 10%;
 }
 .tit2{
-    text-align: left;
+  text-align: left;
 }
 h2{
-     padding-left:5%;
+  padding-left:5%;
 }
