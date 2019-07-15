@@ -3,30 +3,30 @@
 require 'conexao.php';
 
 if (!empty($_POST)) {
-  $output = '';
+  $output  = '';
   $message = '';
-  $nome = mysqli_real_escape_string($conn, $_POST['nome']);
-  $email = mysqli_real_escape_string($conn, $_POST['email']);
+  $nome    = mysqli_real_escape_string($conn, $_POST['nome']);
+  $email   = mysqli_real_escape_string($conn, $_POST['email']);
   if ($_POST['codigo'] != '') {
-    $query = "UPDATE usuarios SET nome='$nome', email='$email' WHERE codigo='" . $_POST['codigo'] . "'";
+    $query   = "UPDATE usuarios SET nome='$nome', email='$email' WHERE codigo='" . $_POST['codigo'] . "'";
     $message = 'Dados Atualizados';
   } else {
-    $query = "
+    $query   = "
            INSERT INTO usuarios(nome, email) VALUES('$nome', '$email');";
     $message = 'Dados Inseridos';
   }
   if (mysqli_query($conn, $query)) {
-    $output .= '<label class="text-success">' . $message . '</label>';
+    $output       .= '<label class="text-success">' . $message . '</label>';
     $select_query = "SELECT * FROM usuarios ORDER BY codigo DESC";
-    $result = mysqli_query($conn, $select_query);
-    $output .= '
+    $result       = mysqli_query($conn, $select_query);
+    $output       .= '
          <table class="table table-bordered">
             <tr>
               <th width="5%">Código</th>
               <th width="70%">Nome do Usuario</th>
             </tr>
            ';
-    while ($row = mysqli_fetch_array($result)) {
+    while ($row          = mysqli_fetch_array($result)) {
       $output .= '
         <tr>
           <td>' . $row['codigo'] . '</td>

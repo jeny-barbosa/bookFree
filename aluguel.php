@@ -2,9 +2,9 @@
 session_start();
 require 'conexao.php';
 $iOffset = empty($_GET['pagina']) ? 0 : ($_GET['pagina'] * 10) - 10;
-$query = "SELECT aluguel.id, livro.nome as livro, usuarios.nome as usuario, aluguel.data_inicio, aluguel.data_fim FROM aluguel INNER JOIN usuarios ON usuarios.codigo = aluguel.idusuario INNER JOIN livro ON livro.codigo = aluguel.idlivro WHERE 1 = 1 %s %s %s %s %s  ORDER BY id ASC LIMIT 10 OFFSET $iOffset";
+$query   = "SELECT aluguel.id, livro.nome as livro, usuarios.nome as usuario, aluguel.data_inicio, aluguel.data_fim FROM aluguel INNER JOIN usuarios ON usuarios.codigo = aluguel.idusuario INNER JOIN livro ON livro.codigo = aluguel.idlivro WHERE 1 = 1 %s %s %s %s %s  ORDER BY id ASC LIMIT 10 OFFSET $iOffset";
 
-$query = sprintf($query
+$query  = sprintf($query
   , (isset($_POST['usuario_nome']) && $_POST['usuario_nome']) ? ' AND usuarios.nome LIKE \'%' . addslashes($_POST['usuario_nome']) . '%\'' : ''
   , (isset($_POST['email_user']) && $_POST['email_user']) ? ' AND EMAIL_USER LIKE \'%' . addslashes($_POST['email_user']) . '%\'' : ''
   , (isset($_POST['nome_livro']) && $_POST['nome_livro']) ? ' AND livro.nome LIKE \'%' . addslashes($_POST['nome_livro']) . '%\'' : ''
@@ -12,7 +12,7 @@ $query = sprintf($query
   , (isset($_POST['data_fim']) && $_POST['data_fim']) ? ' AND DATA_FIM = ' . $_POST['data_fim'] : ''
 );
 $result = mysqli_query($conn, $query);
-$aKeys = array_keys($_GET);
+$aKeys  = array_keys($_GET);
 if (in_array('pagina', $aKeys)) {
   $iPagina = $_GET['pagina'];
 } else {
@@ -142,7 +142,7 @@ if (in_array('pagina', $aKeys)) {
               <label for="">Selecione um usuario</label>
               <select id="usuario_nome_incluir" name="usuario_nome_incluir">
                 <option >Selecione...</option>
-                <?php while ($user = mysqli_fetch_array($query)) { ?>
+                <?php while ($user  = mysqli_fetch_array($query)) { ?>
                   <option value="<?php echo $user['codigo'] ?>"><?php echo $user['nome'] ?></option>
                 <?php } ?>
               </select>  <br> <br>

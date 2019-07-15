@@ -6,23 +6,23 @@ $valida = true;
 
 if ($_POST['nome-add'] == '') {
   $retorno .= "Preencha o campo Nome <br />";
-  $valida = false;
+  $valida  = false;
 }
 
 if ($_POST['email-add'] == '') {
   $retorno .= "Preencha o campo Autor<br />";
-  $valida = false;
+  $valida  = false;
 }
 
 if ($_POST['senha-add'] == '') {
   $retorno .= "Preencha o campo Edição <br />";
-  $valida = false;
+  $valida  = false;
 }
 
 
 if ($valida) {
   //   $codigo = $_POST['codigo'];
-  $nome = $_POST['nome-add'];
+  $nome  = $_POST['nome-add'];
   $email = $_POST['email-add'];
   $senha = md5($_POST['senha-add']);
 

@@ -3,15 +3,15 @@
 require 'conexao.php';
 
 if (!empty($_POST)) {
-  $output = '';
+  $output  = '';
   $message = '';
-  $senha = md5($_POST['nome']);
+  $senha   = md5($_POST['nome']);
 
   if ($_POST['codigo'] != '') {
-    $query = "UPDATE usuarios SET senha='$senha' WHERE codigo='" . $_POST['codigo'] . "'";
+    $query   = "UPDATE usuarios SET senha='$senha' WHERE codigo='" . $_POST['codigo'] . "'";
     $message = 'Dados Atualizados';
   } else {
-    $query = "
+    $query   = "
            INSERT INTO usuarios(senha) VALUES('$senha');";
     $message = 'Dados Inseridos';
   }

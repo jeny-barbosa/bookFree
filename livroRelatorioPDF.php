@@ -10,9 +10,9 @@ $html .= '</tr>';
 $html .= '</thead>';
 $html .= '<tbody>';
 
-$result_transacoes = "SELECT DISTINCT nome, codigo FROM livro ";
+$result_transacoes   = "SELECT DISTINCT nome, codigo FROM livro ";
 $resultado_trasacoes = mysqli_query($conn, $result_transacoes);
-while ($row_transacoes = mysqli_fetch_assoc($resultado_trasacoes)) {
+while ($row_transacoes      = mysqli_fetch_assoc($resultado_trasacoes)) {
   $html .= '<tr><td>' . $row_transacoes['codigo'] . "</td>";
   $html .= '<td>' . $row_transacoes['nome'] . "</td></tr>";
 }

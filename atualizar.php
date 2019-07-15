@@ -3,31 +3,31 @@
 require 'conexao.php';
 
 if (!empty($_POST)) {
-  $output = '';
+  $output  = '';
   $message = '';
-  $nome = mysqli_real_escape_string($conn, $_POST['nome']);
-  $autor = mysqli_real_escape_string($conn, $_POST['autor']);
-  $edicao = mysqli_real_escape_string($conn, $_POST['edicao']);
+  $nome    = mysqli_real_escape_string($conn, $_POST['nome']);
+  $autor   = mysqli_real_escape_string($conn, $_POST['autor']);
+  $edicao  = mysqli_real_escape_string($conn, $_POST['edicao']);
   if ($_POST['codigo'] != '') {
-    $query = "UPDATE livro SET nome='$nome', autor='$autor', edicao = '$edicao'WHERE codigo='" . $_POST['codigo'] . "'";
+    $query   = "UPDATE livro SET nome='$nome', autor='$autor', edicao = '$edicao'WHERE codigo='" . $_POST['codigo'] . "'";
     $message = 'Dados Atualizados';
   } else {
-    $query = "
+    $query   = "
            INSERT INTO livro(nome, autor, edicao) VALUES('$nome', '$autor', '$edicao');";
     $message = 'Dados Inseridos';
   }
   if (mysqli_query($conn, $query)) {
-    $output .= '<label class="text-success">' . $message . '</label>';
+    $output       .= '<label class="text-success">' . $message . '</label>';
     $select_query = "SELECT * FROM livro ORDER BY codigo DESC";
-    $result = mysqli_query($conn, $select_query);
-    $output .= '
+    $result       = mysqli_query($conn, $select_query);
+    $output       .= '
       <table class="table table-bordered">
         <tr>
           <th width="5%">Código</th>
           <th width="70%">Nome do livro</th>
         </tr>
     ';
-    while ($row = mysqli_fetch_array($result)) {
+    while ($row          = mysqli_fetch_array($result)) {
       $output .= '
         <tr>
           <td>' . $row['codigo'] . '</td>

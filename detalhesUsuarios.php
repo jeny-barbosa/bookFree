@@ -1,14 +1,14 @@
 <?php
 
 if (isset($_POST["codigo"])) {
-  $output = '';
+  $output  = '';
   $connect = mysqli_connect("localhost", "root", "", "projetobd");
-  $query = "SELECT * FROM usuarios WHERE codigo = '" . $_POST['codigo'] . "'";
-  $result = mysqli_query($connect, $query);
-  $output .= '
+  $query   = "SELECT * FROM usuarios WHERE codigo = '" . $_POST['codigo'] . "'";
+  $result  = mysqli_query($connect, $query);
+  $output  .= '
       <div class="table-responsive">
            <table class="table table-bordered">';
-  while ($row = mysqli_fetch_array($result)) {
+  while ($row     = mysqli_fetch_array($result)) {
     $output .= '
                  <tr>
                      <td width="10%"><label>Código</label></td>

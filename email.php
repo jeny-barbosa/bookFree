@@ -2,8 +2,8 @@
 
 require 'usuarioConn.php';
 
-$Email = $_POST["Email"]; // Pega o valor do campo Email
-$token = md5(date('Y-m-d H:i:s') . $Email);
+$Email   = $_POST["Email"]; // Pega o valor do campo Email
+$token   = md5(date('Y-m-d H:i:s') . $Email);
 //$validade =
 $inserir = mysqli_query($conexao, "INSERT INTO tokenusuarios(email, token) VALUES ('$Email', '$token')");
 
@@ -18,18 +18,18 @@ define('GPWD', 'jalb170897');  // <-- Insira aqui a senha do seu GMail
 
 function smtpmailer($para, $de, $de_nome, $assunto, $corpo) {
   global $error;
-  $mail = new PHPMailer();
+  $mail             = new PHPMailer();
   $mail->IsSMTP();  // Ativar SMTP
-  $mail->SMTPDebug = 1;  // Debugar: 1 = erros e mensagens, 2 = mensagens apenas
-  $mail->SMTPAuth = true;  // Autenticação ativada
+  $mail->SMTPDebug  = 1;  // Debugar: 1 = erros e mensagens, 2 = mensagens apenas
+  $mail->SMTPAuth   = true;  // Autenticação ativada
   $mail->SMTPSecure = 'tls'; // SSL REQUERIDO pelo GMail
-  $mail->Host = 'smtp.gmail.com'; // SMTP utilizado
-  $mail->Port = 587;    // A porta 587 deverá estar aberta em seu servidor
-  $mail->Username = GUSER;
-  $mail->Password = GPWD;
+  $mail->Host       = 'smtp.gmail.com'; // SMTP utilizado
+  $mail->Port       = 587;    // A porta 587 deverá estar aberta em seu servidor
+  $mail->Username   = GUSER;
+  $mail->Password   = GPWD;
   $mail->SetFrom($de, $de_nome);
-  $mail->Subject = $assunto;
-  $mail->Body = $corpo;
+  $mail->Subject    = $assunto;
+  $mail->Body       = $corpo;
   $mail->AddAddress($para);
   if (!$mail->Send()) {
     $error = 'Mail error: ' . $mail->ErrorInfo;

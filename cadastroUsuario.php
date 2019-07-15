@@ -2,14 +2,14 @@
 session_start();
 require 'conexao.php';
 $iOffset = empty($_GET['pagina']) ? 0 : ($_GET['pagina'] * 15) - 15;
-$query = "SELECT * FROM usuarios WHERE 1 = 1 %s %s  ORDER BY codigo ASC LIMIT 10 OFFSET $iOffset";
+$query   = "SELECT * FROM usuarios WHERE 1 = 1 %s %s  ORDER BY codigo ASC LIMIT 10 OFFSET $iOffset";
 
-$query = sprintf($query
+$query  = sprintf($query
   , (isset($_POST['nome']) && $_POST['nome']) ? ' AND NOME LIKE \'%' . addslashes($_POST['nome']) . '%\'' : ''
   , (isset($_POST['codigo']) && $_POST['codigo']) ? ' AND CODIGO = ' . $_POST['codigo'] : ''
 );
 $result = mysqli_query($conn, $query);
-$aKeys = array_keys($_GET);
+$aKeys  = array_keys($_GET);
 if (in_array('pagina', $aKeys)) {
   $iPagina = $_GET['pagina'];
 } else {

@@ -7,7 +7,7 @@ $html .= '<thead>';
 $html .= '</thead>';
 $html .= '<tbody>';
 
-$result_transacoes = "SELECT DISTINCT codigo, CONCAT(autor, '(',count(codigo),')') as autor from livro group by autor";
+$result_transacoes   = "SELECT DISTINCT codigo, CONCAT(autor, '(',count(codigo),')') as autor from livro group by autor";
 $resultado_trasacoes = mysqli_query($conn, $result_transacoes);
 
 
