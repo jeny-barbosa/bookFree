@@ -15,8 +15,10 @@ $tabela .= '<td><b>Nome</b></td>';
 $tabela .= '<td><b>Edicao</b></td>';
 $tabela .= '</tr>';
 
-$resultado = mysqli_query($conn, 'SELECT nome,edicao FROM livro order by edicao');
-
+$resultado = mysqli_query($conn, ""
+  . "SELECT nome,edicao "
+  . "FROM livro "
+  . "ORDER BY edicao");
 
 while ($dados = mysqli_fetch_array($resultado)) {
   $tabela .= '<tr>';

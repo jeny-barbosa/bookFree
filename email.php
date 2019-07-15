@@ -5,7 +5,9 @@ require 'usuarioConn.php';
 $Email   = $_POST["Email"]; // Pega o valor do campo Email
 $token   = md5(date('Y-m-d H:i:s') . $Email);
 //$validade =
-$inserir = mysqli_query($conexao, "INSERT INTO tokenusuarios(email, token) VALUES ('$Email', '$token')");
+$inserir = mysqli_query($conexao, ""
+  . "INSERT INTO tokenusuarios(email, token) "
+    . "VALUES ('$Email', '$token')");
 
 echo 'Gravado com sucesso';
 

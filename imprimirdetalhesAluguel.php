@@ -1,7 +1,7 @@
 <?php
 
 include_once("conexao.php");
-$html = '<table border=1 align="center"';
+$html  = '<table border=1 align="center"';
 $html .= '<thead>';
 $html .= '<tr>';
 $html .= '<th>ID</th>';
@@ -13,9 +13,18 @@ $html .= '</tr>';
 $html .= '</thead>';
 $html .= '<tbody>';
 
-$result_transacoes   = "SELECT aluguel.id, livro.nome as livro, usuarios.nome as usuario, aluguel.data_inicio, aluguel.data_fim FROM aluguel INNER JOIN usuarios ON usuarios.codigo = aluguel.idusuario INNER JOIN livro ON livro.codigo = aluguel.idlivro WHERE id = '" . $_GET['id'] . "'"
+$result_transacoes   = ""
+  . "SELECT aluguel.id, livro.nome as livro, usuarios.nome as usuario, aluguel.data_inicio, aluguel.data_fim "
+    . "FROM aluguel "
+      . "INNER JOIN usuarios "
+      . "ON usuarios.codigo = aluguel.idusuario "
+      . "INNER JOIN livro "
+      . "ON livro.codigo = aluguel.idlivro "
+    . "WHERE id = '" . $_GET['id'] . "'"
 ;
+
 $resultado_trasacoes = mysqli_query($conn, $result_transacoes);
+
 while ($row_transacoes      = mysqli_fetch_assoc($resultado_trasacoes)) {
   $html .= '<tr><td>' . $row_transacoes['id'] . "</td>";
   $html .= '<td>' . $row_transacoes['livro'] . "</td>";

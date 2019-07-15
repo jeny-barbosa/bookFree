@@ -4,7 +4,7 @@ include_once('conexao.php');
 
 $arquivo = 'Dados Gerais Livros.xls';
 
-$tabela = '<table border="1">';
+$tabela  = '<table border="1">';
 $tabela .= '<tr>';
 $tabela .= '<td colspan="2">Relatorio Geral</tr>';
 $tabela .= '</tr>';
@@ -15,8 +15,10 @@ $tabela .= '<td><b>Autor</b></td>';
 $tabela .= '<td><b>Edicao</b></td>';
 $tabela .= '</tr>';
 
-$resultado = mysqli_query($conn, 'SELECT * FROM livro order by codigo');
-
+$resultado = mysqli_query($conn, ""
+  . "SELECT * "
+    . "FROM livro "
+    . "ORDER BY codigo");
 
 while ($dados = mysqli_fetch_array($resultado)) {
   $tabela .= '<tr>';

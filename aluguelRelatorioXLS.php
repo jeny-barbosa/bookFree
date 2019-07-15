@@ -4,7 +4,7 @@ include_once('conexao.php');
 
 $arquivo = 'Dados Gerais dos Emprestimos.xls';
 
-$tabela = '<table border="1">';
+$tabela  = '<table border="1">';
 $tabela .= '<tr>';
 $tabela .= '<td colspan="2">Relatorio Emprestimos</tr>';
 $tabela .= '</tr>';
@@ -16,8 +16,13 @@ $tabela .= '<td><b>Data Inicio</b></td>';
 $tabela .= '<td><b>Data Fim</b></td>';
 $tabela .= '</tr>';
 
-$resultado = mysqli_query($conn, "SELECT aluguel.id, livro.nome as livro, usuarios.nome as usuario, aluguel.data_inicio, aluguel.data_fim FROM aluguel INNER JOIN usuarios ON usuarios.codigo = aluguel.idusuario INNER JOIN livro ON livro.codigo = aluguel.idlivro");
-
+$resultado = mysqli_query($conn, ""
+  . "SELECT aluguel.id, livro.nome as livro, usuarios.nome as usuario, aluguel.data_inicio, aluguel.data_fim "
+    . "FROM aluguel "
+    . "INNER JOIN usuarios "
+    . "ON usuarios.codigo = aluguel.idusuario "
+    . "INNER JOIN livro "
+    . "ON livro.codigo = aluguel.idlivro");
 
 while ($dados = mysqli_fetch_array($resultado)) {
   $tabela .= '<tr>';

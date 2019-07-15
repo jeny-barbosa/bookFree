@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 ?>
@@ -12,7 +11,6 @@ session_start();
   </head>
   <body>
     Bem vindo <?php echo $_SESSION['userName']; ?>!
-
     <a href="index.php" onclick="signOut();">Sair</a>
     <script>
       function signOut() {
@@ -22,6 +20,5 @@ session_start();
         });
       }
     </script>
-
   </body>
 </html>

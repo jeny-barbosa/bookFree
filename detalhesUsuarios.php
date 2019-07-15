@@ -3,11 +3,16 @@
 if (isset($_POST["codigo"])) {
   $output  = '';
   $connect = mysqli_connect("localhost", "root", "", "projetobd");
-  $query   = "SELECT * FROM usuarios WHERE codigo = '" . $_POST['codigo'] . "'";
+  $query   = ""
+    . "SELECT * FROM usuarios "
+    . "WHERE codigo = '" . $_POST['codigo'] . "'";
+
   $result  = mysqli_query($connect, $query);
+
   $output  .= '
       <div class="table-responsive">
            <table class="table table-bordered">';
+
   while ($row     = mysqli_fetch_array($result)) {
     $output .= '
                  <tr>

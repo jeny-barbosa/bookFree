@@ -2,7 +2,17 @@
 session_start();
 require 'conexao.php';
 $iOffset = empty($_GET['pagina']) ? 0 : ($_GET['pagina'] * 10) - 10;
-$query   = "SELECT aluguel.id, livro.nome as livro, usuarios.nome as usuario, aluguel.data_inicio, aluguel.data_fim FROM aluguel INNER JOIN usuarios ON usuarios.codigo = aluguel.idusuario INNER JOIN livro ON livro.codigo = aluguel.idlivro WHERE 1 = 1 %s %s %s %s %s  ORDER BY id ASC LIMIT 10 OFFSET $iOffset";
+
+$query   = ""
+  . "SELECT aluguel.id, livro.nome as livro, usuarios.nome as usuario, aluguel.data_inicio, aluguel.data_fim "
+    . " FROM aluguel "
+      . "INNER JOIN usuarios "
+        . "ON usuarios.codigo = aluguel.idusuario "
+      . "INNER JOIN livro "
+        . "ON livro.codigo = aluguel.idlivro "
+    . "WHERE 1 = 1 %s %s %s %s %s  "
+    . "ORDER BY id ASC "
+    . "LIMIT 10 OFFSET $iOffset";
 
 $query  = sprintf($query
   , (isset($_POST['usuario_nome']) && $_POST['usuario_nome']) ? ' AND usuarios.nome LIKE \'%' . addslashes($_POST['usuario_nome']) . '%\'' : ''
@@ -11,14 +21,17 @@ $query  = sprintf($query
   , (isset($_POST['data_inicio']) && $_POST['data_inicio']) ? ' AND DATA_INICIO LIKE \'%' . addslashes($_POST['data_inicio']) . '%\'' : ''
   , (isset($_POST['data_fim']) && $_POST['data_fim']) ? ' AND DATA_FIM = ' . $_POST['data_fim'] : ''
 );
+
 $result = mysqli_query($conn, $query);
 $aKeys  = array_keys($_GET);
+
 if (in_array('pagina', $aKeys)) {
   $iPagina = $_GET['pagina'];
 } else {
   $iPagina = 1;
 }
 ?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -59,6 +72,7 @@ if (in_array('pagina', $aKeys)) {
   </head>
   <body>
     <?php include_once 'menu.php'; ?>
+
     <div class="container" style="width:900px;">
       <p align="center" style="font-size:32pt;">Empréstimos - BookFree </p>
       <div class="table-responsive">
@@ -94,22 +108,23 @@ if (in_array('pagina', $aKeys)) {
                 <th width="15%" style="text-align: center; font-size: 14pt;">Data Fim</th>
                 <th width="60%" style="text-align: center; font-size: 14pt;">Ação</th>
               </tr>
+
               <?php
               while ($row = mysqli_fetch_array($result)) {
-                ?>
-                <tr >
+              ?>
+              <tr>
                   <td style="text-align: center;"><?php echo $row['id']; ?></td>
                   <td style="font-size: 12pt;"><?php echo $row['livro']; ?></td>
                   <td style="font-size: 12pt;"><?php echo $row['usuario']; ?></td>
                   <td style="font-size: 12pt;"><?php echo date('d/m/Y', strtotime($row['data_inicio'])); ?></td>
                   <td style="font-size: 12pt;"><?php echo date('d/m/Y', strtotime($row['data_fim'])); ?></td>
-
                   <td align="center">
                     <button type="button" name="view" value="view" id="<?php echo $row['id']; ?>" class="btn btn-success  view_data"><span class="glyphicon glyphicon-eye-open"></span></button>
                     <button type="button" name="delete" value="delete" id="<?php echo $row['id']; ?>" class="excluirReg btn btn-danger "><span class="glyphicon glyphicon-trash"></span></button>
                   </td>
                 </tr>
-                <?php
+
+              <?php
               }
               ?>
             </table>
@@ -137,7 +152,10 @@ if (in_array('pagina', $aKeys)) {
           <div class="modal-body">
             <form name="form1" id="form1" method="post"  >
               <?php
-              $query = mysqli_query($conn, "SELECT codigo, nome FROM usuarios order by nome");
+              $query = mysqli_query($conn, ""
+                . "SELECT codigo, nome "
+                  . "FROM usuarios "
+                  . "ORDER BY nome");
               ?>
               <label for="">Selecione um usuario</label>
               <select id="usuario_nome_incluir" name="usuario_nome_incluir">
@@ -148,7 +166,10 @@ if (in_array('pagina', $aKeys)) {
               </select>  <br> <br>
 
               <?php
-              $query = mysqli_query($conn, "SELECT codigo, nome FROM livro order by nome");
+              $query = mysqli_query($conn, ""
+                . "SELECT codigo, nome "
+                  . "FROM livro "
+                  . "ORDER BY nome");
               ?>
               <label for="">Selecione um livro</label>
               <select id="nome_livro_incluir" name="nome_livro_incluir">
@@ -195,13 +216,11 @@ if (in_array('pagina', $aKeys)) {
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4 class="modal-title" id="myModalLabel">Excluir Livro </h4>
           </div>
           <div class="modal-body">
             <p class="sucess-message">Tem certeza de que quer excluir o registro?</p>
-
           </div>
           <div class="modal-footer">
             <button class="btn btn-success delete-confirm" type="button">Sim</button>
