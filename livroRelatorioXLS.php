@@ -4,7 +4,7 @@ include_once('conexao.php');
 
 $arquivo = 'Dados Livros.xls';
 
-$tabela = '<table border="1">';
+$tabela  = '<table border="1">';
 $tabela .= '<tr>';
 $tabela .= '<td colspan="2">Relatorio Geral</tr>';
 $tabela .= '</tr>';
@@ -13,8 +13,7 @@ $tabela .= '<td><b>Codigo</b></td>';
 $tabela .= '<td><b>Nome</b></td>';
 $tabela .= '</tr>';
 
-$resultado = mysqli_query($conn, 'SELECT DISTINCT nome, codigo FROM livro');
-
+$resultado = mysqli_query($conn, "SELECT DISTINCT nome, codigo FROM livro");
 
 while ($dados = mysqli_fetch_array($resultado)) {
   $tabela .= '<tr>';

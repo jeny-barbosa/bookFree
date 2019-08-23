@@ -1,6 +1,6 @@
 <?php
 
-include_once("conexao.php");
+include_once('conexao.php');
 $html  = '<table border=1 align="center"';
 $html .= '<thead>';
 $html .= '<tr>';
@@ -38,7 +38,7 @@ $html .= '</table';
 
 use Dompdf\Dompdf;
 
-require_once("dompdf/autoload.inc.php");
+require_once('dompdf/autoload.inc.php');
 $dompdf = new DOMPDF();
 $dompdf->load_html('<h1 style="text-align: center;">BookFree - Detalhes do Aluguel</h1>' . $html . '');
 $dompdf->render();

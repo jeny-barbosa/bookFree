@@ -1,6 +1,6 @@
 <?php
 
-include_once("conexao.php");
+include_once('conexao.php');
 $html  = '<table border=1 align="center"';
 $html .= '<thead>';
 $html .= '<tr>';

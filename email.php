@@ -2,7 +2,7 @@
 
 require 'usuarioConn.php';
 
-$Email   = $_POST["Email"]; // Pega o valor do campo Email
+$Email   = $_POST['Email']; // Pega o valor do campo Email
 $token   = md5(date('Y-m-d H:i:s') . $Email);
 //$validade =
 $inserir = mysqli_query($conexao, ""

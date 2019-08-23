@@ -1,6 +1,6 @@
 <?php
 
-include_once("conexao.php");
+include_once('conexao.php');
 
 $html = '<table  ';
 $html .= '<thead>';
@@ -20,7 +20,7 @@ $html .= "------ <p style='color:blue;'>Foram encontrados " . mysqli_num_rows($r
 
 use Dompdf\Dompdf;
 
-require_once("dompdf/autoload.inc.php");
+require_once('dompdf/autoload.inc.php');
 $dompdf = new DOMPDF();
 
 $dompdf->load_html('<h1>BookFree - Relatório dos Autores</h1>' . $html . '');

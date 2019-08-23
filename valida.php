@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-include_once("conexao.php");
+include_once('conexao.php');
 $email             = filter_input(INPUT_POST, 'userEmail', FILTER_SANITIZE_STRING);
 $result_usuario    = "SELECT * FROM usuarios WHERE email='$email' LIMIT 1";
 $resultado_usuario = mysqli_query($conn, $result_usuario);

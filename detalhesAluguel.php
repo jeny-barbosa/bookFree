@@ -1,8 +1,8 @@
 <?php
 
-if (isset($_POST["id"])) {
+if (isset($_POST['id'])) {
   $output  = '';
-  $connect = mysqli_connect("localhost", "root", "", "projetobd");
+  $connect = mysqli_connect('localhost', 'root', '', 'projetobd');
   $query   = "SELECT aluguel.id, livro.nome as livro, usuarios.nome as usuario, aluguel.data_inicio, aluguel.data_fim FROM aluguel INNER JOIN usuarios ON usuarios.codigo = aluguel.idusuario INNER JOIN livro ON livro.codigo = aluguel.idlivro WHERE id = '" . $_POST['id'] . "'";
   $result  = mysqli_query($connect, $query);
   $output  .= '

@@ -2,7 +2,7 @@
 
 require 'conexao.php';
 
-$codigo = $_POST["codigo"];
+$codigo = $_POST['codigo'];
 
 $sql = ""
   . "DELETE "

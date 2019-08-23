@@ -234,13 +234,13 @@ if (in_array('pagina', $aKeys)) {
       /* Script Adicionar */
       $(document).ready(function () {
         $('#enviar').click(function () {
-          if ($('#usuario_nome_incluir').children("option:selected").val() === "Selecione...") {
+          if ($('#usuario_nome_incluir').children("option:selected").val() === 'Selecione...') {
             alert("Selecione um Usuario");
-          } else if ($('#nome_livro_incluir').children("option:selected").val() === "Selecione...") {
+          } else if ($('#nome_livro_incluir').children("option:selected").val() === 'Selecione...') {
             alert("Selecione um Livro");
-          } else if ($('#data_inicio-incluir').datepicker().val() === "") {
+          } else if ($('#data_inicio-incluir').datepicker().val() === '') {
             alert("Informe a data de Locacao");
-          } else if ($('#data_fim-incluir').datepicker().val() === "") {
+          } else if ($('#data_fim-incluir').datepicker().val() === '') {
             alert("Informe a data de devolução");
           } else
           {
@@ -249,7 +249,7 @@ if (in_array('pagina', $aKeys)) {
               type: 'POST',
               data: {
                 'idusuario': $('#usuario_nome_incluir').children('option:selected').val()
-                , 'idlivro': $('#nome_livro_incluir').children("option:selected").val()
+                , 'idlivro': $('#nome_livro_incluir').children('option:selected').val()
                 , 'data_inicio': $('#data_inicio-incluir').datepicker().val()
                 , 'data_fim': $('#data_fim-incluir').datepicker().val()
               },
@@ -269,10 +269,10 @@ if (in_array('pagina', $aKeys)) {
         if (id !== '')
         {
           $.ajax({
-            url: "detalhesAluguel.php",
-            method: "POST",
+            url: 'detalhesAluguel.php',
+            method: 'POST',
             data: {id: id},
-            dataType: "html",
+            dataType: 'html',
             success: function (data) {
               $('#employee_detail').html(data);
               $('#dataModal').modal('show');
@@ -292,11 +292,11 @@ if (in_array('pagina', $aKeys)) {
           $.ajax({
             url: 'excluirAluguel.php',
             data: {'id': id},
-            method: "post",
+            method: 'post',
             success: function (data) {
               $('#result').html(data);
-              alert("Dados Excluidos");
-              location.href = "aluguel.php";
+              alert('Dados Excluidos');
+              location.href = 'aluguel.php';
               window.close();
             }
           });
@@ -307,9 +307,9 @@ if (in_array('pagina', $aKeys)) {
       var dataInicio, dataFinal, msg;
 
       window.onload = function () {
-        dataInicio = document.getElementById("data_inicio-incluir");
-        dataFinal = document.getElementById("data_fim-incluir");
-        msg = document.getElementById("msg");
+        dataInicio = document.getElementById('data_inicio-incluir');
+        dataFinal = document.getElementById('data_fim-incluir');
+        msg = document.getElementById('msg');
       };
 
       function verificarData()
@@ -324,13 +324,13 @@ if (in_array('pagina', $aKeys)) {
 
         if (dataI == "" && dataI.length != 10)
         {
-          msg.innerHTML = ("A data de retirada é invalida.");
+          msg.innerHTML = ('A data de retirada é invalida.');
           return false;
         }
 
         if (dataF == "" && dataF.length != 10)
         {
-          ﻿msg.innerHTML = ("A data de entrega é invalida.");
+          ﻿msg.innerHTML = ('A data de entrega é invalida.');
           return false;
         }
 
@@ -340,18 +340,18 @@ if (in_array('pagina', $aKeys)) {
           dataF = new Date(dataF);
           if (dataF <= dataI)
           {
-            msg.innerHTML = ("A data entrega não pode ser menor ou igual a data da retirada.");
+            msg.innerHTML = ('A data entrega não pode ser menor ou igual a data da retirada.');
             return false;
           }
           dataI.setDate(dataI.getDate() + 7);
 
           if (dataF > dataI)
           {
-            msg.innerHTML = ("A data de entrega não pode ser maior que 7 dias da data da retirada.");
+            msg.innerHTML = ('A data de entrega não pode ser maior que 7 dias da data da retirada.');
             return false;
           }
 
-          msg.innerHTML = ("Período válido");
+          msg.innerHTML = ('Período válido');
           return true;
         }
       }

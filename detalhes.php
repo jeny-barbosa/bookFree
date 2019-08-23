@@ -1,8 +1,8 @@
 <?php
 
-if (isset($_POST["codigo"])) {
+if (isset($_POST['codigo'])) {
   $output  = '';
-  $connect = mysqli_connect("localhost", "root", "", "projetobd");
+  $connect = mysqli_connect('localhost', 'root', '', 'projetobd');
   $query   = "SELECT * FROM livro WHERE codigo = '" . $_POST['codigo'] . "'";
   $result  = mysqli_query($connect, $query);
   $output  .= '

@@ -1,4 +1,3 @@
-
 <head>
   <meta charset="utf-8">
   <title>Verificar a data</title>
@@ -64,7 +63,6 @@
       }
 
     }
-
   </script>
 </body>
 </html>

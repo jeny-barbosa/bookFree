@@ -4,7 +4,7 @@ include_once('conexao.php');
 
 $arquivo = 'Dados Gerais Autores.xls';
 
-$tabela = '<table border="1">';
+$tabela  = '<table border="1">';
 $tabela .= '<tr>';
 $tabela .= '<td colspan="2">Relatorio Geral</tr>';
 $tabela .= '</tr>';
@@ -12,7 +12,7 @@ $tabela .= '<tr>';
 $tabela .= '<td><b>Autor</b></td>';
 $tabela .= '</tr>';
 
-$resultado = mysqli_query($conn, 'SELECT DISTINCT autor FROM livro order by autor');
+$resultado = mysqli_query($conn, "SELECT DISTINCT autor FROM livro order by autor");
 
 while ($dados = mysqli_fetch_array($resultado)) {
   $tabela .= '<tr>';
